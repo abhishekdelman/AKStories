@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AK Stories</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Poppins', Arial;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 0;
+            margin: 0;
+            line-height: 1.0;
+        }
+
+        /* Container */
+        .container {
+    max-width: 800px; /* Reduced from 1000px to 800px */
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 140px; /* Adding space for the fixed header */
+    padding-bottom: 80px; /* Adding space for the fixed footer */
+        }
+
+        /* Header */
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            height: 60px; /* Fixed height */
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            height: 60px; /* Fixed height */
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        /* Story Card */
+        .story-box {
+            background-color: rgb(255, 251, 240);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+        .story-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .story-image {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .story-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .story-text {
+    font-size: 1.1rem; /* Reduced from 1.2rem to 1rem */
+    color: #555;
+    overflow: hidden;
+    max-height: 150px; /* Initially show part of the story */
+    transition: max-height 0.3s ease;
+        }
+
+        .story-text.expanded {
+            max-height: 1000px; /* Allow full expansion when toggled */
+        }
+
+        /* Button Styling */
+        .expand-btn {
+            background-color: #4a4a7d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 15px;
+            align-self: flex-start;
+            transition: background-color 0.3s ease;
+        }
+
+        .expand-btn:hover {
+            background-color: #3a3a6d;
+        }
+
+        /* Add a soft shadow to text */
+        h1, .section-title, .footer-text {
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .story-text {
+                font-size: 1.1rem;
+            }
+
+            .footer-text {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AK Stories - Let the Imagination flow</h1>
+    </header>
+
+    <div class="container">
+        <section class="story-box">
+            <div class="story-image">
+                <img src="story1.jpg.png" alt="Radiant Mornings">
+            </div>
+            <div class="story-content">
+                <h2 class="section-title">Chapter 1: Radiant Mornings</h2>
+                <p class="story-text">
+                    After 10 years of a deep, unwavering love, they met for the third time in Rajasthan, where their hearts always seemed to reconnect. As the golden sun dipped behind the desert dunes, she appeared from the left, wearing her favorite yellow dress, the same one that made her glow like a radiant morning.
+                    The cool breeze brushed past them, carrying memories of their journey—of laughter, quiet moments, and unspoken promises. In that familiar, serene calm, they didn’t need words. Their love had grown over a decade, and now, standing together in the soft light of Rajasthan’s beauty, it felt as timeless as the desert itself.
+                    In her eyes, he found home. And in his presence, she felt peace.
+                </p>
+                <button class="expand-btn" onclick="toggleContent(this)">Expand</button>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p class="footer-text">Keep spreading positivity wherever you go. The world is brighter with your smile!</p>
+    </footer>
+
+    <script>
+        // Toggle the content visibility
+        function toggleContent(button) {
+            var content = button.previousElementSibling; // The story text
+            content.classList.toggle('expanded');
+
+            // Change button text based on the current state
+            if (content.classList.contains('expanded')) {
+                button.textContent = 'Collapse';
+            } else {
+                button.textContent = 'Expand';
+            }
+        }
+    </script>
+
+</body>
+</html>
